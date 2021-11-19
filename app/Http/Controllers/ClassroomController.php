@@ -127,8 +127,11 @@ class ClassroomController extends Controller
     }
 
     public function filter_by_grade(Request $request){
+        $selected_grade = Grade::where('id',$request->filter_grade_id)->pluck('name');
+
         $filtered_classrooms = Classroom::where('grade_id',$request->filter_grade_id)->get();
         $grades = Grade::all();
+        toastr()->success('Filtered Successfully!', 'Class Filtered By ' . $selected_grade[0]);
         return view('classrooms.classrooms',compact('filtered_classrooms','grades'));
     }
 }

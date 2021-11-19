@@ -93,6 +93,20 @@
             font-weight: bold;
             color: #a11313;
         }
+        select[name="filter_grade_id"]{
+            height: 46px;width: 170px;
+            padding: 0;
+            background: #84ba3f;
+            color: #fff;
+            font-weight: bold;
+            font-size: 14px;
+            border-radius: 3px !important;
+            font-family: inherit;
+            border:0;
+            text-align: center;
+            cursor: pointer;
+        }
+
     </style>
 @section('title')
     Class Room List
@@ -136,9 +150,9 @@
                     <button type="button" class="button x-small" id="btn_delete_all">
                         Delete all
                     </button>
-                    <form action="{{route('filter-by-grade')}}" method="POST">
+                    <form style="width: 200px;display: inline-block;" action="{{route('filter-by-grade')}}" method="POST">
                         {{ csrf_field() }}
-                        <select class="selectpicker" data-style="btn-info" name="filter_grade_id" required
+                        <select class="form-control" data-style="btn-info" name="filter_grade_id" required
                                 onchange="this.form.submit()">
                             <option value="" selected disabled>Search By Grade</option>
                             @if (is_array($grades) || is_object($grades))
@@ -431,14 +445,23 @@
             //////////// edit data /////////////////
             $(document).on('click','.edit_class',function (){
                 let class_id = $(this).attr('data-id');
-                console.log(class_id)
                 let url = "classrooms/"+class_id+"/edit";
+                if (window.location.href.indexOf("filter-by-grade") > -1) {
+                    url = class_id+"/edit";
+                }else{
+                    url = "classrooms/"+class_id+"/edit";
+                }
                 $.ajax({
                     type:'GET',
                     url: url,
                     success:function(data){
                         if(data.status){
                             var id ="classrooms/"+data.data.id+"";
+                            if (window.location.href.indexOf("filter-by-grade") > -1) {
+                                id = data.data.id+"";
+                            }else{
+                                url = "classrooms/"+data.data.id+"";
+                            }
                             $('#grade_id option').each(function(index, item){
                                 if(data.data.grade_id == item.value){
                                     $('#current_grade').val(item.text);

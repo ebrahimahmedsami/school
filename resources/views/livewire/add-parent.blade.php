@@ -13,7 +13,11 @@
         </div>
     @endif
 
+@if($show_table)
+    @include('livewire.Parent_Table')
+        @else
 
+            <button class="btn btn-success btn-sm btn-lg pull-right" wire:click="show_parents" type="button">Show Parents</button><br><br>
 
         <div class="stepwizard">
             <div class="stepwizard-row setup-panel">
@@ -58,12 +62,20 @@
 
                             <button class="btn btn-danger btn-sm nextBtn btn-lg pull-right" type="button"
                                     wire:click="back(2)">Back</button>
-
+                            @if($updateMode)
+                                <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" wire:click="submitForm_edit"
+                                        type="button">Finish
+                                </button>
+                            @else
                                 <button class="btn btn-success btn-sm btn-lg pull-right" wire:click="submitForm"
                                         type="button">Finish</button>
+                            @endif
                         </div>
                     </div>
                 </div>
 
 
         </div>
+        @endif
+
+</div>
