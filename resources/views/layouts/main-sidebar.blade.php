@@ -18,7 +18,7 @@
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#elements">
                             <div class="pull-left"><i class="ti-palette"></i><span
-                                    class="right-nav-text">{{trans('main.grades')}}</span></div>
+                                    class="right-nav-text">Grades</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
@@ -30,7 +30,7 @@
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#calendar-menu">
                             <div class="pull-left"><i class="ti-calendar"></i><span
-                                    class="right-nav-text">Study Class Rooms</span></div>
+                                    class="right-nav-text">Class Rooms</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
@@ -49,6 +49,19 @@
                         </a>
                         <ul id="Parents-menu" class="collapse" data-parent="#sidebarnav">
                             <li> <a href="{{url('add_parent')}}">Parents List</a> </li>
+                        </ul>
+                    </li>
+
+                    <!-- Teachers-->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Teachers-menu">
+                            <div class="pull-left"><i class="fa fa-user-o"></i><span
+                                    class="right-nav-text">Teachers</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="Teachers-menu" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{route('teachers.index')}}">Teachers List</a> </li>
                         </ul>
                     </li>
                 </ul>

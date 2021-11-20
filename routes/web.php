@@ -24,6 +24,9 @@ Route::group(
 
     Route::resource('grades', 'GradeController');
     Route::resource('classrooms', 'ClassroomController');
+    Route::resource('teachers', 'TeacherController');
+
+
     Route::post('classrooms/delete-all', 'ClassroomController@delete_all')->name('delete_all');
     Route::post('classrooms/filter-by-grade', 'ClassroomController@filter_by_grade')->name('filter-by-grade');
 
